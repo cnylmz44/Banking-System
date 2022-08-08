@@ -1,12 +1,14 @@
 package com.example.bankingproject.core.utilities.entities;
 
-public class BankCreateErrorResponse {
+public class BankAccountDepositSuccessResponse {
 	private boolean success;
 	private String message;
+	private double balance;
 
-	public BankCreateErrorResponse(String message) {
-		this.success = false;
+	private BankAccountDepositSuccessResponse(String message, double balance) {
+		this.success = true;
 		this.message = message;
+		this.balance = balance;
 	}
 
 	public boolean isSuccess() {
@@ -24,4 +26,13 @@ public class BankCreateErrorResponse {
 	public void setMessage(String message) {
 		this.message = message;
 	}
+
+	public double getBalance() {
+		return balance;
+	}
+
+	public void setBalance(double balance) {
+		this.balance = balance;
+	}
+
 }

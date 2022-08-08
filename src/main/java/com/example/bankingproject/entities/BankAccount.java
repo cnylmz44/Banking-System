@@ -1,6 +1,7 @@
 package com.example.bankingproject.entities;
 
 import java.io.Serializable;
+import java.util.Random;
 
 import org.apache.ibatis.type.Alias;
 
@@ -12,7 +13,7 @@ public class BankAccount implements Serializable {
 	private int id;
 	private int user_id;
 	private int bank_id;
-	private int number;
+	private String number;
 	private String type;
 	private double balance;
 	private long creation_date;
@@ -43,11 +44,11 @@ public class BankAccount implements Serializable {
 		this.bank_id = bank_id;
 	}
 
-	public int getNumber() {
+	public String getNumber() {
 		return number;
 	}
 
-	public void setNumber(int number) {
+	public void setNumber(String number) {
 		this.number = number;
 	}
 
@@ -94,4 +95,19 @@ public class BankAccount implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+	// Generate 10 Digits Unique Account Number
+	public String generateBankAccountNumber(int digitNumber) {
+		String generatedNumber = "";
+		Random random = new Random();
+
+		// Generate every digits randomly
+		for (int i = 0; i < digitNumber; i++) {
+			generatedNumber = generatedNumber + Integer.toString(random.nextInt(10));
+		}
+
+		return generatedNumber;
+
+	}
+
 }

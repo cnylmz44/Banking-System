@@ -1,10 +1,10 @@
 package com.example.bankingproject.core.utilities.entities;
 
-public class BankAccountCreateErrorResponse {
+public class ErrorResponse {
 	private boolean success;
 	private String message;
 
-	public BankAccountCreateErrorResponse(String message) {
+	public ErrorResponse(String message) {
 		this.success = false;
 		this.message = message;
 	}
@@ -24,4 +24,5 @@ public class BankAccountCreateErrorResponse {
 	public void setMessage(String message) {
 		this.message = message;
 	}
+
 }
