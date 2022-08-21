@@ -1,4 +1,7 @@
 # Banking Project
+_Prepared with inspiration from current technologies; It is a Spring Boot application that can be used to create a bank account, bring account information, delete account, update account, load money into account, transfer money from one account to another account, create a user for user transactions, login and enable operations on behalf of banking transactions._
+
+_In the project designed with REST and a layered architecture system, MySQL was used as the database, MyBatis and JDBC for database relations, JWT for user authentication, Apache Kafka for logging and CollectApi for exchange operations._
 ### Technologies
 - _Java_
 - _Spring Boot_
