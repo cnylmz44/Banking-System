@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "com.example.bankingproject.dataAccess.abstracts.BankAccountDao">
+	<select id="getBankAccountByNumber" resultType="BankAccount" >
+		SELECT * FROM bank_accounts WHERE number= #{number} AND is_deleted = 0
+	</select>
+	<insert id="createBankAccount">
+		INSERT INTO bank_accounts(user_id, bank_id, number, type, creation_date, last_updated_date) 
+		VALUES(#{user_id},#{bank_id},#{number},#{type},#{creation_date},#{last_updated_date})
+	</insert>
+	<update id="deleteBankAccount" parameterType="String">
+	    UPDATE bank_accounts SET is_deleted = 1 WHERE number = #{number}
+    </update>
+    <update id="updateBalance" >
+    	UPDATE bank_accounts SET balance = #{balance} WHERE number = #{number}
+    </update>
+    <update id="updateLastModifiedDate" >
+    	UPDATE bank_accounts SET last_updated_date = #{currentTimeMillis} WHERE number = #{number}
+    </update>
+</mapper>

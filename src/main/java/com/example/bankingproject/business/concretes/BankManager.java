@@ -13,6 +13,7 @@ public class BankManager implements BankService {
 	private BankDao bankDao;
 	private Bank bank;
 
+	// Check Bank is Exist
 	@Override
 	public boolean isBankExist(String name) {
 		bank = bankDao.getBankByName(name);
@@ -22,6 +23,8 @@ public class BankManager implements BankService {
 			return true;
 	}
 
+	// Create Bank
+	// Return Bank Details
 	@Override
 	public Bank createBank(String name) {
 		// TODO Auto-generated method stub

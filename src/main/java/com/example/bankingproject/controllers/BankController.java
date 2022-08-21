@@ -22,9 +22,11 @@ public class BankController {
 
 	@RequestMapping(path = "/banks", method = RequestMethod.POST)
 	public ResponseEntity<?> createBank(@RequestBody BankCreateRequest request) {
-		if (bankService.isBankExist(request.getName()))
+		if (bankService.isBankExist(request.getName())) {
 			return ResponseEntity.unprocessableEntity()
 					.body(new ErrorResponse("Given Name Already Used : " + request.getName()));
+		}
+
 		else {
 			bank = bankService.createBank(request.getName());
 			return ResponseEntity.ok().body(new BankCreateSuccessResponse("Created Successfully!", bank));

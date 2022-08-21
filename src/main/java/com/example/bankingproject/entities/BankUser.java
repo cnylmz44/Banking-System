@@ -1,15 +1,63 @@
 package com.example.bankingproject.entities;
 
+import java.util.Collection;
+import java.util.List;
+
 import org.apache.ibatis.type.Alias;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 
 @Alias("BankUser")
-public class BankUser {
+public class BankUser extends User {
+
+	private static final long serialVersionUID = 1L;
 	private int id;
-	private String username;
 	private String email;
-	private String password;
-	private boolean enabled;
-	private String authorities;
+	private List<GrantedAuthority> authorities;
+
+	public BankUser(String username, String password, boolean enabled, boolean accountNonExpired,
+			boolean credentialsNonExpired, boolean accountNonLocked, Collection<? extends GrantedAuthority> authorities,
+			int id, String email) {
+		super(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
+		this.id = id;
+		this.email = email;
+	}
+
+	/*
+	 * private int id; private String username; private String email; private String
+	 * password; private boolean enabled; private List<GrantedAuthority>
+	 * authorities;
+	 */
+
+	@Override
+	public Collection<GrantedAuthority> getAuthorities() {
+		// TODO Auto-generated method stub
+		return this.authorities;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return true;
+	}
 
 	public int getId() {
 		return id;
@@ -19,12 +67,8 @@ public class BankUser {
 		this.id = id;
 	}
 
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
+	public void setAuthorities(List<GrantedAuthority> authorities) {
+		this.authorities = authorities;
 	}
 
 	public String getEmail() {
@@ -35,27 +79,4 @@ public class BankUser {
 		this.email = email;
 	}
 
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public boolean isEnabled() {
-		return enabled;
-	}
-
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
-	}
-
-	public String getAuthorities() {
-		return authorities;
-	}
-
-	public void setAuthorities(String authorities) {
-		this.authorities = authorities;
-	}
 }
